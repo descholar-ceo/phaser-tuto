@@ -1,0 +1,24 @@
+{
+  "name": "phaser-tuto",
+  "version": "1.0.0",
+  "description": "This is a tutorial of phaser framework for building games",
+  "main": "index.js",
+  "author": "descholar-ceo <emmanuellamugi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --mode=development --env development --watch --open"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "phaser": "3.24.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.3.0",
+    "html-webpack-plugin": "^4.5.0",
+    "webpack": "4.44.2",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  }
+}
