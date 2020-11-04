@@ -1,6 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = (env) => ({
   context: __dirname,
@@ -32,10 +31,6 @@ module.exports = (env) => ({
       template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html',
     }),
-    new webpack.DefinePlugin({
-      'typeof CANVAS_RENDERER': JSON.stringify(true),
-      'typeof WEBGL_RENDERER': JSON.stringify(true),
-    })
   ],
   performance: {
     hints: false,
