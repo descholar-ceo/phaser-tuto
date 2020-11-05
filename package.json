@@ -6,10 +6,12 @@
   "author": "descholar-ceo <emmanuellamugi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --env development --watch --open"
+    "dev": "webpack-dev-server --mode=development --env development --watch --open",
+    "eslint-f": "npx eslint . --fix"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "file-loader": "^6.2.0",
     "phaser": "3.24.1"
   },
   "devDependencies": {

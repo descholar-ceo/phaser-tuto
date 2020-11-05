@@ -23,6 +23,10 @@ module.exports = (env) => ({
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+      {
+        test: /\.(png|jpg|svg|gif|jpeg)?$/,
+        use: 'file-loader',
+      },
     ],
   },
   plugins: [
