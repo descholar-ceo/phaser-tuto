@@ -1,13 +1,13 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = (env) => ({
   context: __dirname,
-  entry: './src/index.js',
+  entry: { app: './src/index.js' },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
-    publicPath: '/',
+    filename: 'app.main.js',
   },
   mode: env ? 'production' : 'development',
   devServer: {
@@ -23,10 +23,6 @@ module.exports = (env) => ({
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
-      {
-        test: /\.(png|jpg|svg|gif|jpeg)?$/,
-        use: 'file-loader',
-      },
     ],
   },
   plugins: [
@@ -34,6 +30,10 @@ module.exports = (env) => ({
       title: 'Phaser Tuto',
       template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html',
+    }),
+    new webpack.DefinePlugin({
+      'typeof CANVAS_RENDERER': JSON.stringify(true),
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
     }),
   ],
   performance: {
