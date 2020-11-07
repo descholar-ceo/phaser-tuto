@@ -6,8 +6,8 @@
   "author": "descholar-ceo <emmanuellamugi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --env development --watch --open",
-    "build": "webpack -p --env production",
+    "dev": "webpack-dev-server --watch --open",
+    "build": "webpack",
     "eslint-f": "npx eslint . --fix"
   },
   "dependencies": {
