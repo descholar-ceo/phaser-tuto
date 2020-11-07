@@ -5,7 +5,8 @@
 // // import bomb from '../assets/bomb.png';
 // // import dude from '../assets/dude.png';
 
-import showMessage from './messager';
+import Phaser from 'phaser';
+import SimpleScene from './scenes/simple-scene';
 
 // function preload() {
 //   this.load.setBaseURL(__dirname);
@@ -25,13 +26,11 @@ import showMessage from './messager';
 
 // }
 
-// const config = {
-//   type: Phaser.AUTO,
-//   width: 800,
-//   height: 600,
-//   scene: { preload, create, update },
-// };
+const config = {
+  width: 800,
+  height: 600,
+  scene: SimpleScene,
+};
 
-// const game = new Phaser.Game(config);
-
-showMessage('Hello there! Welcome to the new world!');
+// eslint-disable-next-line no-unused-vars
+const game = new Phaser.Game(config);
