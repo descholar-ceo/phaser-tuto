@@ -36,5 +36,9 @@ module.exports = {
         to: path.resolve(__dirname, 'dist/'),
       },
     ]),
+    new webpack.DefinePlugin({
+      'typeof CANVAS_RENDERER': JSON.stringify(true),
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
+    }),
   ],
 };
