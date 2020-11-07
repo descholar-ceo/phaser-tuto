@@ -31,6 +31,6 @@
 // };
 
 // const game = new Phaser.Game(config);
-const messageEl = document.createElement('div');
-messageEl.textContent = 'I was put here by JavaScript!';
+const messageEl = document.createElement('h1');
+messageEl.textContent = 'Hello there! Welcome to the new world!';
 document.body.appendChild(messageEl);
