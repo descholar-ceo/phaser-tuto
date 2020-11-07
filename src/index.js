@@ -5,6 +5,8 @@
 // // import bomb from '../assets/bomb.png';
 // // import dude from '../assets/dude.png';
 
+import showMessage from './messager';
+
 // function preload() {
 //   this.load.setBaseURL(__dirname);
 //   this.load.image('sky', '../assets/sky.png');
@@ -31,6 +33,5 @@
 // };
 
 // const game = new Phaser.Game(config);
-const messageEl = document.createElement('h1');
-messageEl.textContent = 'Hello there! Welcome to the new world!';
-document.body.appendChild(messageEl);
+
+showMessage('Hello there! Welcome to the new world!');
