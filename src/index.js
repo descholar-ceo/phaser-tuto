@@ -12,6 +12,9 @@ function preload() {
 let platforms;
 let player;
 let cursors;
+let stars;
+
+const collectStar = (player, star) => { star.disableBody(true, true); };
 
 function create() {
   this.add.image(400, 300, 'sky');
@@ -43,6 +46,16 @@ function create() {
     repeat: -1,
   });
   this.physics.add.collider(player, platforms);
+  stars = this.physics.add.group({
+    key: 'star',
+    repeat: 11,
+    setXY: { x: 12, y: 0, stepX: 70 },
+  });
+  stars.children.iterate((child) => {
+    child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+  });
+  this.physics.add.collider(stars, platforms);
+  this.physics.add.overlap(player, stars, collectStar, null, this);
 }
 
 function update() {
@@ -58,7 +71,7 @@ function update() {
     player.anims.play('turn');
   }
   if (cursors.up.isDown && player.body.touching.down) {
-    player.setVelocityY(-500);
+    player.setVelocityY(-400);
   }
 }
 
