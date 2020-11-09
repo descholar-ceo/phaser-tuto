@@ -11,6 +11,7 @@ function preload() {
 
 let platforms;
 let player;
+let cursors;
 
 function create() {
   this.add.image(400, 300, 'sky');
@@ -45,7 +46,17 @@ function create() {
 }
 
 function update() {
-
+  cursors = this.input.keyboard.createCursorKeys();
+  if (cursors.left.isDown) {
+    player.setVelocityX(-160);
+    player.anims.play('left', true);
+  } else if (cursors.lright.isDown) {
+    player.setVelocityX(160);
+    player.anims.play('right', true);
+  } else {
+    player.setVelocityX(0);
+    player.anims.play('turn');
+  }
 }
 
 const config = {
