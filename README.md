@@ -17,4 +17,4 @@ Webpack
 * Twitter: [descholar](https://twitter.com/descholar3)
 
 
-===> You can find this readme file template [on this link](https://github.com/nezago/nezago-guidelines/wiki/Readme-file-template)
+:point_right: You can find this readme file template [on this link](https://github.com/nezago/nezago-guidelines/wiki/Readme-file-template)
