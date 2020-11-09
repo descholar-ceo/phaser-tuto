@@ -1,38 +1,53 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
-module.exports = (env) => ({
-  context: __dirname,
-  entry: './src/index.js',
+module.exports = {
+  entry: {
+    app: './src/index.js',
+    'production-dependencies': ['phaser'],
+  },
+
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
-    publicPath: '/',
-  },
-  mode: env ? 'production' : 'development',
-  devServer: {
-    inline: true,
-    port: process.env.PORT,
-    contentBase: path.join(__dirname, 'dist'),
+    filename: 'app.main.js',
   },
 
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
+        include: path.resolve(__dirname, 'src/'),
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+          },
+        },
       },
     ],
   },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+  },
   plugins: [
-    new HtmlWebPackPlugin({
-      title: 'Phaser Tuto',
-      template: path.resolve(__dirname, 'public/index.html'),
-      filename: 'index.html',
+    new CopyPlugin([
+      {
+        from: path.resolve(__dirname, 'index.html'),
+        to: path.resolve(__dirname, 'dist/'),
+      },
+      {
+        from: path.resolve(__dirname, 'assets', '**', '*'),
+        to: path.resolve(__dirname, 'dist/'),
+      },
+    ]),
+    new webpack.DefinePlugin({
+      'typeof CANVAS_RENDERER': JSON.stringify(true),
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'production-dependencies',
+      filename: 'production-dependecies.bundle.js',
     }),
   ],
-  performance: {
-    hints: false,
-  },
-});
+};
